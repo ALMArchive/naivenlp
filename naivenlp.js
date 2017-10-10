@@ -51,9 +51,9 @@ function parse(str, skip) {
    } else {
       str = trim(str);
       str = lower(str);
-      str = fixSpelling(str);
+      // str = fixSpelling(str);
       str = stops(str);
-      str = stems(str);
+      // str = stems(str);
    }
    return str;
 }
@@ -63,5 +63,6 @@ module.exports = {
    lower:       lower,
    fixSpelling: fixSpelling,
    stops:       stops,
-   stems:       stems
+   stems:       stems,
+   parse:       parse
 }
