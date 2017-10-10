@@ -1,0 +1,38 @@
+{
+  "name": "naivenlp",
+  "version": "0.1.0",
+  "description": "Extremely naive nlp processor. Uses other nlp packages to ATTEMPT to simplify an input string for further processing.",
+  "main": "naivenlp.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALMaclaine/naivenlp.git"
+  },
+  "keywords": [
+    "Naive",
+    "NLP",
+    "Natural",
+    "Language",
+    "Processing",
+    "Simple",
+    "Easy",
+    "Basic"
+  ],
+  "author": "Alessandro Maclaine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ALMaclaine/naivenlp/issues"
+  },
+  "homepage": "https://github.com/ALMaclaine/naivenlp#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "is": "^3.2.1",
+    "spellchecker": "^3.4.3",
+    "wink-porter2-stemmer": "^1.0.7"
+  }
+}
