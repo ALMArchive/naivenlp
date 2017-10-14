@@ -78,8 +78,6 @@ function extractMath(str) {
    return str;
 }
 
-console.log(extractMath("12321"));
-
 function parse(str, skip) {
    if(!is.string(str)) throw new Error("First parmater to parse must be a string.");
    if(is.object(skip)) {
