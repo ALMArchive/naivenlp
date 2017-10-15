@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 const chai     = require("chai");
 const naivenlp = require("../naivenlp.js");
@@ -191,4 +191,4 @@ describe("naivenlp", function() {
          chai.expect(naivenlp.parse(str)).to.equal("2x - 2y");
       });
    });
-})
+});

@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 const is           = require("is");
 const sw           = require("stopword");
@@ -108,6 +108,7 @@ function isolateMath(str) {
    return ret;
 }
 
+// Aggregate parsing
 function parse(str, skip) {
    if(is.object(skip)) {
       if(!(!!skip.trim))    str = trim(str);

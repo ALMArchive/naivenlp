@@ -1,3 +1,5 @@
+"use strict";
+
 const naivenlp = require("./naivenlp.js");
 
 const sents = [
@@ -56,7 +58,3 @@ for(const x of sents) {
 for(const x of nonsense) {
    console.log(naivenlp.parse(x));
 }
-
-// for(const x of sents) {
-//    console.log(naivenlp.isolateMath(x));
-// }
