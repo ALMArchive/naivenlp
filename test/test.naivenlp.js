@@ -160,19 +160,19 @@ describe("naivenlp", function() {
       });
       it("Return only trimmed", function() {
          let str = "This is a long # string with embedded random 2x words and - 2y symbols letters worded and phrasing";
-         chai.expect(naivenlp.parse(str, {lower: true, extMath: true, stops: true, stems: true})).to.equal(naivenlp.trim(str));
+         chai.expect(naivenlp.parse(str, {lower: true, isoMath: true, stops: true, stems: true})).to.equal(naivenlp.trim(str));
       });
       it("Return only lowered", function() {
          let str = "This is a long # string with embedded random 2x words and - 2y symbols letters worded and phrasing";
-         chai.expect(naivenlp.parse(str, {trim: true, extMath: true, stops: true, stems: true})).to.equal(naivenlp.lower(str));
+         chai.expect(naivenlp.parse(str, {trim: true, isoMath: true, stops: true, stems: true})).to.equal(naivenlp.lower(str));
       });
       it("Return only stops", function() {
          let str = "This is a long # string with embedded random 2x words and - 2y symbols letters worded and phrasing";
-         chai.expect(naivenlp.parse(str, {trim: true, lower: true, extMath: true, stems: true})).to.equal(naivenlp.stops(str));
+         chai.expect(naivenlp.parse(str, {trim: true, lower: true, isoMath: true, stems: true})).to.equal(naivenlp.stops(str));
       });
       it("Return only stems", function() {
          let str = "This is a long # string with embedded random 2x words and - 2y symbols letters worded and phrasing";
-         chai.expect(naivenlp.parse(str, {trim: true, lower: true, extMath: true, stops: true})).to.equal(naivenlp.stems(str));
+         chai.expect(naivenlp.parse(str, {trim: true, lower: true, isoMath: true, stops: true})).to.equal(naivenlp.stems(str));
       });
       it("Return only math", function() {
          let str = "This is a long # string with embedded random 2x words and - 2y symbols letters worded and phrasing";
@@ -184,7 +184,7 @@ describe("naivenlp", function() {
       });
       it("Return only stop and trimmed", function() {
          let str = "This is a long # string with embedded random 2x words and - 2y symbols letters worded and phrasing";
-         chai.expect(naivenlp.parse(str, {lower: true, extMath: true, stems: true})).to.equal(naivenlp.stops(naivenlp.trim(str)));
+         chai.expect(naivenlp.parse(str, {lower: true, isoMath: true, stems: true})).to.equal(naivenlp.stops(naivenlp.trim(str)));
       });
       it("Return all", function() {
          let str = "This is a long # string with embedded random 2x words and - 2y symbols letters worded and phrasing";

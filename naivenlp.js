@@ -8,9 +8,9 @@ const Regex        = require("regex");
 const RegReplacer  = require("regreplacer");
 
 // Condition Tests and data
-const toFilter = ["!", "=<", "=>", "\\[", "\]", "%", "\|", "&", "~", "\,", "{", "}", "\?", "@", "#", "’", "'", "\."];
+const toFilter = ["!", "=<", "=>", "\$", "\\[", "\]", "%", "\|", "&", "~", "\,", "{", "}", "\?", "@", "#", "’", "'", "\."];
 const isSym     = (val) => toFilter.indexOf(val) !== -1;
-const math   = ["+", "*", "^", "-", "/", "="];
+const math   = ["+", "*", "^", "-", "/", "=", "\(", "\)"];
 const isMathSym = (val) => math.indexOf(val) !== -1;
 
 // Trim any multiple occuring white spaces
@@ -113,7 +113,8 @@ function parse(str, skip) {
    if(is.object(skip)) {
       if(!(!!skip.trim))    str = trim(str);
       if(!(!!skip.lower))   str = lower(str);
-      if(!(!!skip.extMath)) str = isolateMath(str);
+      if(!(!!skip.w2n))     str = words2numbers(str);
+      if(!(!!skip.isoMath)) str = isolateMath(str);
       if(!(!!skip.stops))   str = stops(str);
       if(!(!!skip.stems))   str = stems(str);
    } else {

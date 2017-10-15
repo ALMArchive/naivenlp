@@ -2,7 +2,7 @@
 
 const naivenlp = require("../naivenlp.js");
 
-// Trim all beinning, double and trailing spaces
+// Trim all beginning, double and trailing spaces
 let str1 = " a  b  c ";
 console.log(naivenlp.trim(str1)); // "a b c"
 
