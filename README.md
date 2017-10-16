@@ -4,13 +4,13 @@ Extremely naive nlp processor.  Uses other nlp packages to ATTEMPT to simplify a
 ```javascript
 // Run string through parser with options
 let str1 = "What’s your favorite piece of clothing you own / owned?";
-let str3 = "What is the answer to y = x + 3";
+let str2 = "What is the answer to y = x + 3";
 
 // "What’s favorite piece clothing own / owned?"
 console.log(naivenlp.parse(str1, {lower: true, isoMath: true, stems: true}));
 
 // "y = x + 3"
-console.log(naivenlp.parse(str3, {trim: true, lower: true}));
+console.log(naivenlp.parse(str2, {trim: true, lower: true}));
 ```
 
 ##
