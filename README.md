@@ -112,7 +112,7 @@ console.log(naivenlp.parse(str10, {lower: true, isoMath: true, stems: true}));
 
 #### init
 ```javascript
-const naivenlp = require("../naivenlp.js");
+const naivenlp = require("naivenlp.js");
 ```
 
 #### Methods
