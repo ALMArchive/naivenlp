@@ -1,149 +1,130 @@
-"use strict";
-
-const is           = require("is");
-const sw           = require("stopword");
-const stem         = require("wink-porter2-stemmer" );
-const w2n          = require("words-to-numbers");
-const Regex        = require("regex");
-const RegReplacer  = require("regreplacer");
+import is from 'is';
+import sw from 'stopword';
+import stem from 'wink-porter2-stemmer';
+import { wordsToNumbers } from 'words-to-numbers';
 
 // Condition Tests and data
-const toFilter = ["!", "=<", "=>", "\$", "\\[", "\]", "%", "\|", "&", "~", "\,", "{", "}", "\?", "@", "#", "’", "'", "\."];
-const isSym     = (val) => toFilter.indexOf(val) !== -1;
-const math   = ["+", "*", "^", "-", "/", "=", "\(", "\)"];
-const isMathSym = (val) => math.indexOf(val) !== -1;
+const toFilter = ['!', '=<', '=>', '$', '[', ']', '%', '|', '&', '~', ',', '{', '}', '?', '@', '#', '’', "'", '.'];
+const isSym = val => toFilter.indexOf(val) !== -1;
+const math = ['+', '*', '^', '-', '/', '=', '(', ')'];
+const isMathSym = val => math.indexOf(val) !== -1;
+
+// Replace Symbol
+export function replace(str, match, rep) {
+  const tmpReg = new RegExp(match, 'g');
+  return str.replace(tmpReg, rep);
+}
+
+export function trimSpaces(str, num) {
+  let finalNum = num;
+  if (finalNum < 1) finalNum = 1;
+  const reg = `\\s{${finalNum},}`;
+  return replace(str, reg, ' ').trim();
+}
 
 // Trim any multiple occuring white spaces
-function trim(str) {
-   return trimSpaces(str, 2);
+export function trim(str) {
+  return trimSpaces(str, 2);
 }
 
-function trimSpaces(str, num) {
-   (num < 1) ? num = 1 : null;
-   let reg = `\\s{${num},}`;
-   return replace(str, reg, " ").trim();
-}
-
-function trimAllSpaces(str) {
-   let reg = `\\s{1,}`;
-   return replace(str, reg, "").trim();
+export function trimAllSpaces(str) {
+  const reg = '\\s{1,}';
+  return replace(str, reg, '').trim();
 }
 
 // Convert words to numbers
-function words2numbers(str) {
-   return w2n.wordsToNumbers(str);
+export function words2numbers(str) {
+  return wordsToNumbers(str);
 }
 
 // Lowercase all letters
-function lower(str) {
-   return str.toLowerCase();
+export function lower(str) {
+  return str.toLowerCase();
 }
 
 // Split String on split
-function splitOn(str, split) {
-   return str.split(split);
+export function splitOn(tmpStr, tmpSplit) {
+  return tmpStr.split(tmpSplit);
 }
 
 // Split String
-function split(str) {
-   return splitOn(str, " ");
+export function split(str) {
+  return splitOn(str, ' ');
 }
 
 // Join array on
-function joinOn(arr, join) {
-   return arr.join(join);
+export function joinOn(arr, joiner) {
+  return arr.join(joiner);
 }
 
 // Join array
-function join(arr) {
-   return joinOn(arr, " ");
+export function join(arr) {
+  return joinOn(arr, ' ');
 }
 
 // Remove stop words
-function stops(str) {
-   return join(sw.removeStopwords(split(str)));
+export function stops(str) {
+  return join(sw.removeStopwords(split(str)));
 }
 
 // Convert to stem words
-function stems(str) {
-   return join(split(str).map((e) => stem(e)));
-}
-
-// Replace Symbol
-function replace(str, match, rep) {
-   let tmpReg = new RegExp(match, "g");
-   return str.replace(tmpReg, rep);
+export function stems(str) {
+  return join(split(str).map(e => stem(e)));
 }
 
 // Remove Symbol
-function remove(str, match) {
-   let rep = "";
-   return replace(str, match, rep);
+export function remove(str, match) {
+  const rep = '';
+  return replace(str, match, rep);
 }
 
-function removeWordsLength(str, num) {
-   let reg = `[a-zA-z]{${num},}`
-   return remove(str, reg);
+export function removeWordsLength(str, num) {
+  const reg = `[a-zA-z]{${num},}`;
+  return remove(str, reg);
 }
 
 // Filter Symbols
-function filterSymbols(str, keepMath) {
-   let ret = splitOn(str,"").reduce((a,c) => a += isSym(c) ? "" : c, "");
-   if(!keepMath) {
-      ret = splitOn(ret, "").reduce((a,c) => a += isMathSym(c) ? "" : c, "");
-   }
-   return ret;
+export function filterSymbols(str, keepMath) {
+  let ret = splitOn(str, '').filter(e => !isSym(e)).join('');
+  if (!keepMath) {
+    ret = splitOn(ret, '').filter(e => !isMathSym(e)).join('');
+  }
+  return ret;
 }
 
 // Extract math
-function isolateMath(str) {
-   str = stops(str);
-   str = words2numbers(str);
-   str = filterSymbols(str, true);
-   str = removeWordsLength(str, 3);
+export function isolateMath(str) {
+  let finalStr = str;
+  finalStr = stops(finalStr);
+  finalStr = words2numbers(finalStr);
+  finalStr = filterSymbols(finalStr, true);
+  finalStr = removeWordsLength(finalStr, 3);
 
-   let spl = splitOn(str, "");
-   let ret = spl.reduce((a,c) => a += isMathSym(c) && c !== "^" ? ` ${c} ` : c, "");
-   ret = trim(ret);
-   return ret;
+  const spl = splitOn(finalStr, '');
+  /* eslint-disable no-param-reassign */
+  /* eslint-disable no-return-assign */
+  let ret = spl.reduce((a, c) => a += isMathSym(c) && c !== '^' ? ` ${c} ` : c, '');
+  ret = trim(ret);
+  return ret;
 }
 
 // Aggregate parsing
-function parse(str, skip) {
-   if(is.object(skip)) {
-      if(!(!!skip.trim))    str = trim(str);
-      if(!(!!skip.lower))   str = lower(str);
-      if(!(!!skip.w2n))     str = words2numbers(str);
-      if(!(!!skip.isoMath)) str = isolateMath(str);
-      if(!(!!skip.stops))   str = stops(str);
-      if(!(!!skip.stems))   str = stems(str);
-   } else {
-      str = trim(str);
-      str = lower(str);
-      str = words2numbers(str);
-      str = isolateMath(str);
-      str = stops(str);
-      str = stems(str);
-   }
-   return str;
-}
-
-module.exports = {
-   trim:                trim,
-   trimSpaces:          trimSpaces,
-   trimAllSpaces:       trimAllSpaces,
-   words2numbers:       words2numbers,
-   lower:               lower,
-   splitOn:             splitOn,
-   split:               split,
-   joinOn:              joinOn,
-   join:                join,
-   stops:               stops,
-   stems:               stems,
-   replace:             replace,
-   remove:              remove,
-   removeWordsLength:   removeWordsLength,
-   filterSymbols:       filterSymbols,
-   isolateMath:         isolateMath,
-   parse:               parse
+export function parse(str, skip) {
+  let finalStr = str;
+  if (is.object(skip)) {
+    if (!skip.trim) finalStr = trim(finalStr);
+    if (!skip.lower) finalStr = lower(finalStr);
+    if (!skip.w2n) finalStr = words2numbers(finalStr);
+    if (!skip.isoMath) finalStr = isolateMath(finalStr);
+    if (!skip.stops) finalStr = stops(finalStr);
+    if (!skip.stems) finalStr = stems(finalStr);
+  } else {
+    finalStr = trim(finalStr);
+    finalStr = lower(finalStr);
+    finalStr = words2numbers(finalStr);
+    finalStr = isolateMath(finalStr);
+    finalStr = stops(finalStr);
+    finalStr = stems(finalStr);
+  }
+  return finalStr;
 }
