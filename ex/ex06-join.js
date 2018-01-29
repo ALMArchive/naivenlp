@@ -1,6 +1,6 @@
 "use strict";
 
-const naivenlp = require("../naivenlp.js");
+import * as naivenlp from "../naivenlp";
 
 // Join with spaces
 let arr1 = ["Here","are","words"];

@@ -1,6 +1,6 @@
 "use strict";
 
-const naivenlp = require("../naivenlp.js");
+import * as naivenlp from "../naivenlp";
 
 // isolate math from string
 let str1 = "ax + dog bz - 3 derp = 3";

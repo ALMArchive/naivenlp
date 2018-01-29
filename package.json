@@ -5,8 +5,8 @@
   "main": "naivenlp.js",
   "scripts": {
     "test": "mocha test --compilers js:babel-register --require babel-polyfill",
-    "ex": "node ex/main-example.js",
-    "exAll": "node ex/runAll.js"
+    "ex": "node -r @std/esm ex/main-example.js",
+    "exAll": "node -r @std/esm ex/runAll.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/ALMaclaine/naivenlp#readme",
   "devDependencies": {
+    "@std/esm": "^0.20.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",

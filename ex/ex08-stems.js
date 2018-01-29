@@ -1,6 +1,6 @@
 "use strict";
 
-const naivenlp = require("../naivenlp.js");
+import * as naivenlp from "../naivenlp";
 
 // Remove word stems
 let str1 = "If you had unlimited funds to build a house that you would?";

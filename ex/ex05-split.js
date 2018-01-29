@@ -1,6 +1,6 @@
 "use strict";
 
-const naivenlp = require("../naivenlp.js");
+import * as naivenlp from "../naivenlp";
 
 // Split on spaces
 let str1 = "Here are words";

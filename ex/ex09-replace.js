@@ -1,6 +1,6 @@
 "use strict";
 
-const naivenlp = require("../naivenlp.js");
+import * as naivenlp from "../naivenlp";
 
 // Replace "A" with "#$@#"
 let str1 = "A S D A G A B A";

@@ -1,6 +1,6 @@
 "use strict";
 
-const naivenlp = require("../naivenlp.js");
+import * as naivenlp from "../naivenlp";
 
 // Naivenlp has a total of 17 functions
 let str1 = "a   b      c";

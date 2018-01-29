@@ -1,6 +1,6 @@
 "use strict";
 
-const naivenlp = require("../naivenlp.js");
+import * as naivenlp from "../naivenlp";
 
 // Remove stop words
 let str1 = "This is a series of words, some of which are stop words.";

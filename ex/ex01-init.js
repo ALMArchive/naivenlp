@@ -1,6 +1,6 @@
 "use strict";
 
-const naivenlp = require("../naivenlp.js");
+import * as naivenlp from "../naivenlp";
 
 Reflect.ownKeys(naivenlp).map((e) => console.log(e));
 

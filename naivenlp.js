@@ -1,7 +1,7 @@
 import is from 'is';
 import sw from 'stopword';
 import stem from 'wink-porter2-stemmer';
-import { wordsToNumbers } from 'words-to-numbers';
+const w2n = require('words-to-numbers');
 
 // Condition Tests and data
 const toFilter = ['!', '=<', '=>', '$', '[', ']', '%', '|', '&', '~', ',', '{', '}', '?', '@', '#', '’', "'", '.'];
@@ -34,7 +34,7 @@ export function trimAllSpaces(str) {
 
 // Convert words to numbers
 export function words2numbers(str) {
-  return wordsToNumbers(str);
+  return w2n.wordsToNumbers(str);
 }
 
 // Lowercase all letters

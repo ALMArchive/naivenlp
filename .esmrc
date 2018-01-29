@@ -1,0 +1,6 @@
+{
+  esm: 'js',
+  cjs: {
+    vars: true
+  }
+}

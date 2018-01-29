@@ -1,6 +1,6 @@
 "use strict";
 
-const naivenlp = require("../naivenlp.js");
+import * as naivenlp from "../naivenlp";
 
 // Run string through parser with options
 let str1 = "What’s your favorite piece of clothing you own / owned?";

@@ -1,6 +1,6 @@
 "use strict";
 
-const naivenlp = require("../naivenlp.js");
+import * as naivenlp from "../naivenlp";
 
 // Trim all beginning, double and trailing spaces
 let str1 = " a  b  c ";
