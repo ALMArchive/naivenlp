@@ -1,6 +1,6 @@
 {
   "name": "naivenlp",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Extremely naive nlp processor. Uses other nlp packages to ATTEMPT to simplify an input string for further processing.",
   "main": "dist/naivenlp.js",
   "files": [
