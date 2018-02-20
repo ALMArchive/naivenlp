@@ -4,10 +4,11 @@ import path from "path";
 export default {
   entry: {
     "naivenlp": "./naivenlp.js",
-    "naivenlp.min": "./naivenlp.js"
   },
   target: 'node',
   output: {
+    library: "naivenlp",
+    libraryTarget: "umd",
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js"
   },

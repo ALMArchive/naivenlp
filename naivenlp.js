@@ -1,7 +1,7 @@
 import is from 'is';
 import sw from 'stopword';
 import stem from 'wink-porter2-stemmer';
-const w2n = require('words-to-numbers');
+import w2n from 'words-to-numbers';
 
 // Condition Tests and data
 const toFilter = ['!', '=<', '=>', '$', '[', ']', '%', '|', '&', '~', ',', '{', '}', '?', '@', '#', '’', "'", '.'];
