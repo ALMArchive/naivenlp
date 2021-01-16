@@ -1,6 +1,6 @@
 {
   "name": "naivenlp",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Extremely naive nlp processor. Uses other nlp packages to ATTEMPT to simplify an input string for further processing.",
   "main": "dist/naivenlp.js",
   "files": [
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ALMaclaine/naivenlp.git"
+    "url": "git+https://github.com/almtechhub/naivenlp.git"
   },
   "keywords": [
     "Naive",
@@ -31,9 +31,9 @@
   "author": "Alessandro Maclaine",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ALMaclaine/naivenlp/issues"
+    "url": "https://github.com/almtechhub/naivenlp/issues"
   },
-  "homepage": "https://github.com/ALMaclaine/naivenlp#readme",
+  "homepage": "https://github.com/almtechhub/naivenlp#readme",
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
